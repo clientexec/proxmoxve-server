@@ -160,6 +160,8 @@ class PluginProxmoxve extends ServerPlugin
     public function getNodes($serverId)
     {
         $server = new Server($serverId);
+        // hack to get hostname populated, this should be re-written.
+        $server->getName();
         $pluginVariables = $server->getAllServerPluginVariables($this->user, 'proxmoxve');
         $this->api = new Proxmoxve(
             $pluginVariables['ServerHostName'],
